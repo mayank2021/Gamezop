@@ -1,0 +1,86 @@
+.drawerBackground{
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.29);
+    overflow: hidden;
+    z-index: 200;
+}
+.drawer{
+    background-color: #fff;
+    width: 20%;
+    min-height: 100vh;
+    transition: all 0.6s;
+    transform: translateX(-100%);
+    opacity: 0;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
+}
+
+.drawerShowAnim{
+    transform: translate(0);
+    opacity: 1;
+}
+
+.drawerTopContainer{
+display: flex;
+align-items: center;
+padding: 24px 20px;
+}
+
+.hamburger{
+ width: 25px;
+ height: 25px;
+ margin-right: 30px;
+ cursor: pointer;
+}
+
+.icon{
+    width: 20px;
+    height: 20px;
+    margin-right: 30px;   
+}
+
+.drawerLinkContainer{
+    list-style-type: none;
+    padding: 10px 0px;
+}
+
+.drawerLinkContainer li {
+    padding:20px;
+    position: relative;
+}
+
+.drawerLinkContainer li::before{
+    content: '';
+    width: 4px;
+    height: 80%;
+    border-radius: 100px;
+    background-color: #111;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    transition: all 0.8s;
+    opacity: 0;
+}
+
+.drawerLinkContainer li:hover::before {
+    transform: translate(14rem, -50%);
+    opacity: 1;
+}
+
+.drawerLinkContainer li:hover {
+    background-color: #eeeeee;
+    cursor: pointer;
+}
+
+.drawerLinkContainer li a{
+    font-size: 1.1rem;
+    text-decoration: none;
+    font-weight: 400;
+    text-transform: capitalize;
+    letter-spacing: 1px;
+    color:#111
+}
