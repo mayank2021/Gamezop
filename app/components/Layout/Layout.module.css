@@ -1,0 +1,7 @@
+.headerContainer{
+    display: flex;
+}
+
+.childrenContainer{
+    padding: 0 1.5rem 0 5rem;
+}

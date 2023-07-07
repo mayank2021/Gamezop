@@ -1,0 +1,28 @@
+.newsCard{
+    width: 14rem;
+    border-radius: 6px;
+    padding: 1rem;
+    position: relative;
+    color: #454545;
+    margin: 15px 10px;
+    height: 8rem;
+    border-bottom: 4px solid greenyellow;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.newsCard h2{
+margin: 0;
+}
+
+.newsCard p {
+    font-size: 1rem;
+    text-align: justify;
+}
+
+.readMoreButton{
+    border: none;
+    background-color: transparent;
+    font-weight: 600;
+    color: #068FFF;
+    cursor: pointer;
+}
