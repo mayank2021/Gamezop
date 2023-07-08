@@ -39,17 +39,16 @@ type providerProps = {
 export const GlobalContextProvider = ({ children }: providerProps) => {
   const [showMobileNav, setShowMobileNav] = useState<boolean>(false);
   const [storangeChange, setStorageChange] = useState<boolean>(false);
-  const [handleLoop, setHandleLoop] = useState(true);
   let blockedUsersData = JSON.parse(
-    localStorage.getItem("blockedUsers") || "[]"
+    localStorage?.getItem("blockedUsers") || "[]"
   );
 
   const [blockedUsers, setblockedUsers] = useState(blockedUsersData);
   const [topUsers, setTopUsers] = useState<any>([]);
 
   useEffect(() => {
-    setblockedUsers(JSON.parse(localStorage.getItem("blockedUsers") || "[]"));
-    setTopUsers(JSON.parse(localStorage.getItem("topUsers") || "[]"));
+    setblockedUsers(JSON.parse(localStorage?.getItem("blockedUsers") || "[]"));
+    setTopUsers(JSON.parse(localStorage?.getItem("topUsers") || "[]"));
   }, [storangeChange]);
 
   //------------------------------------NEWS PAGE START------------------------------
@@ -151,7 +150,6 @@ export const GlobalContextProvider = ({ children }: providerProps) => {
   };
 
   const checkExpiry = (blckedUser: any) => {
-    setHandleLoop(false);
     for (let i = 0; i < blckedUser.length; i++) {
       isExpire(blckedUser, blckedUser[i], i);
     }
