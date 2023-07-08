@@ -1,6 +1,5 @@
 "use client";
 import { useEffect, useState } from "react";
-import Layout from "../components/Layout/Layout";
 import Heading from "../components/Heading/Heading";
 import UserContainer from "../components/UserContainer/UserContainer";
 
@@ -14,10 +13,10 @@ const TopUsers = () => {
     setUsersData(userData);
   }, []);
   return (
-    <Layout>
+    <>
       <Heading heading="Top Users" />
       <UserContainer userData={usersData} page="topUser" />
-    </Layout>
+    </>
   );
 };
 

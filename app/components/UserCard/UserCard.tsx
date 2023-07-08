@@ -1,19 +1,13 @@
 "use client";
-import { useState, useEffect, useId, useRef } from "react";
-import Image from "next/image";
-import Profile from "../../Assets/profile.png";
+import { useState, useEffect } from "react";
 import styles from "./UserCard.module.css";
 import Timer from "../Timer/Timer";
+import { useGlobalContext } from "@/app/Context/store";
 
 type userProps = {
   name: string;
   email: string;
   userId: number;
-  query: string;
-  storangeChange: boolean;
-  setStorageChange: React.Dispatch<React.SetStateAction<boolean>>;
-  showUserDetails: (id: number) => void;
-  handleTopUser: (id: number) => void;
 };
 
 type userType = {
@@ -21,16 +15,15 @@ type userType = {
   expiryTime: number;
 };
 
-const UserCard = ({
-  name,
-  email,
-  userId,
-  query,
-  showUserDetails,
-  handleTopUser,
-  storangeChange,
-  setStorageChange,
-}: userProps) => {
+const UserCard = ({ name, email, userId }: userProps) => {
+  const {
+    query,
+    showUserDetails,
+    handleTopUser,
+    storangeChange,
+    handleUserControl,
+  } = useGlobalContext();
+
   let blockedUsersData = JSON.parse(
     localStorage.getItem("blockedUsers") || "[]"
   );
@@ -42,23 +35,6 @@ const UserCard = ({
     setblockedUsers(JSON.parse(localStorage.getItem("blockedUsers") || "[]"));
     setTopUsers(JSON.parse(localStorage.getItem("topUsers") || "[]"));
   }, [storangeChange]);
-
-  const handleUserControl = () => {
-    let arr = JSON.parse(localStorage.getItem("blockedUsers") || "[]");
-    let isBlocked: boolean = arr?.some((user: userType) => user.id === userId);
-
-    if (isBlocked) {
-      arr = arr.filter((user: userType) => user.id !== userId);
-      localStorage.setItem("blockedUsers", JSON.stringify(arr));
-    } else {
-      arr.push({
-        id: userId,
-        expiryTime: Date.now() + 10000,
-      });
-      localStorage.setItem("blockedUsers", JSON.stringify(arr));
-    }
-    setStorageChange(!storangeChange);
-  };
 
   // let timerId = useRef(0);
   // useEffect(() => {
@@ -122,7 +98,7 @@ const UserCard = ({
         <label className={styles.switch}>
           <input
             type="checkbox"
-            onChange={handleUserControl}
+            onChange={() => handleUserControl(userId)}
             // checked={blockedUsers.includes(userId) ? true : false}
           />
           <span className={`${styles.slider} ${styles.round}`}></span>

@@ -28,4 +28,6 @@ export interface ContextProps {
   setStorageChange: React.Dispatch<React.SetStateAction<boolean>>;
   handleUserControl: (userId: number) => void;
   setUserDataOnInitialization: (userData: any) => void;
+  showMobileNav: boolean;
+  setShowMobileNav: React.Dispatch<React.SetStateAction<boolean>>;
 }

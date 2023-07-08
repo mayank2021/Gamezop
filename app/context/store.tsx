@@ -26,6 +26,8 @@ const GlobalContext = createContext<ContextProps>({
   setStorageChange: (): boolean => false,
   handleUserControl: (userId: number) => {},
   setUserDataOnInitialization: (userData: any) => {},
+  showMobileNav: false,
+  setShowMobileNav: (): boolean => false,
 });
 
 type providerProps = {
@@ -33,6 +35,7 @@ type providerProps = {
 };
 
 export const GlobalContextProvider = ({ children }: providerProps) => {
+  const [showMobileNav, setShowMobileNav] = useState<boolean>(false);
   //------------------------------------NEWS PAGE START------------------------------
   const [news, setNews] = useState<any>([]);
   const [showModal, setShowModal] = useState<boolean>(false);
@@ -145,6 +148,8 @@ export const GlobalContextProvider = ({ children }: providerProps) => {
         setStorageChange,
         handleUserControl,
         setUserDataOnInitialization,
+        showMobileNav,
+        setShowMobileNav,
       }}
     >
       {children}

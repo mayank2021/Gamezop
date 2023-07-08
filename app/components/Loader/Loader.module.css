@@ -5,6 +5,11 @@
     align-items: center;
     justify-content: center;
     overflow: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 500;
+    background-color: #fff;
 }
 
 .loader img{

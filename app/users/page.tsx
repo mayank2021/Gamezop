@@ -1,4 +1,3 @@
-import Layout from "../components/Layout/Layout";
 import Heading from "../components/Heading/Heading";
 import UserContainer from "../components/UserContainer/UserContainer";
 
@@ -11,10 +10,10 @@ const Users = async () => {
   const userData = await getUserData();
 
   return (
-    <Layout>
+    <>
       <Heading heading="Users" />
       <UserContainer userData={userData} page="user" />
-    </Layout>
+    </>
   );
 };
 

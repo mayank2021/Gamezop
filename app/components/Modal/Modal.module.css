@@ -50,3 +50,38 @@
     font-size: 1rem;
     text-align: justify;
 }
+
+.paraUtility{
+color :#454545;
+display: flex;
+align-items: center;
+margin: 5px;
+flex-wrap: wrap;
+}
+
+.paraUtility span{
+    font-size: 0.8rem;
+}
+
+.icons{
+    width: 15px;
+    height: 15px;
+    margin-right: 5px;
+}
+
+.infoContainer{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+.company{
+    margin: 0;
+}
+.company span{
+font-size: 0.8rem;
+}
+
+.utilityMargin{
+margin: 0;
+margin-top: 20px;
+}

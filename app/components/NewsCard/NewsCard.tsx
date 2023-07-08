@@ -12,20 +12,20 @@ type userProps = {
   title: string;
   description: string;
   setShowModal: React.Dispatch<React.SetStateAction<boolean>>;
-  data: data;
-  setData: React.Dispatch<React.SetStateAction<data>>;
+  activeUser: data;
+  setActiveUser: React.Dispatch<React.SetStateAction<data>>;
 };
 
 const NewsCard = ({
   title,
   description,
-  data,
-  setData,
+  activeUser,
+  setActiveUser,
   setShowModal,
 }: userProps) => {
   const handleShowModal = (tit: string, desc: string) => {
     setShowModal(true);
-    setData({ ...data, tit: tit, desc: desc });
+    setActiveUser({ ...activeUser, tit: tit, desc: desc });
   };
   return (
     <>

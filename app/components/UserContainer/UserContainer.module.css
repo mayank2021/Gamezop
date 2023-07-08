@@ -4,17 +4,32 @@
     justify-content:center;
 }
 
+
 .searchBar{
-    width: 98%;
+    width: 100%;
     border: 2px solid #454545;
     border-radius: 4px;
     height: 2rem;
     padding: 10px;
     font-size: 1.2rem;
     margin-bottom:  3rem;
+    
 }
 
 .searchBar:focus{
     outline: none;
     border: 2px solid #2196F3;
+}
+
+@media (max-width:900px) {
+    .searchBar{
+        width: 97%;   
+    }
+}
+
+
+@media (max-width:600px) {
+    .searchBar{
+        width: 93%;   
+    }
 }

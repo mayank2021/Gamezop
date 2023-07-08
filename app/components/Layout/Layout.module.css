@@ -5,3 +5,14 @@
 .childrenContainer{
     padding: 0 1.5rem 0 5rem;
 }
+
+@media (max-width:900px) {
+    .childrenContainer{
+        padding: 0 1rem;
+    }
+}
+@media (max-width:600px) {
+    .childrenContainer{
+        padding: 0 1rem;
+    }
+}
