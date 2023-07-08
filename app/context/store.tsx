@@ -123,7 +123,7 @@ export const GlobalContextProvider = ({ children }: providerProps) => {
     } else {
       arr.push({
         id: userId,
-        expiryTime: Date.now() + 10000,
+        expiryTime: Date.now() + 300000,
       });
       localStorage.setItem("blockedUsers", JSON.stringify(arr));
     }

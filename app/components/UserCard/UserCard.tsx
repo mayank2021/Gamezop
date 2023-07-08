@@ -94,7 +94,7 @@ const UserCard = ({ name, page, email, userId }: userProps) => {
 
       {blockedUsers?.some((user: userType) => user?.id === userId) && (
         <div className={styles.timer}>
-          <p>Unblock after 10 seconds</p>
+          <p>Unblock after 5 mins</p>
         </div>
       )}
 
