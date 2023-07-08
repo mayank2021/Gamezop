@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import styles from "./Navbar.module.css";
 import Logo from "../../Assets/gamezop-large.png";
-import { useGlobalContext } from "@/app/Context/store";
+import { useGlobalContext } from "../../context/store";
 
 type NavProps = {
   setShowDrawer: React.Dispatch<React.SetStateAction<boolean>>;

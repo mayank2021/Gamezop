@@ -3,8 +3,7 @@ import { useEffect } from "react";
 import styles from "./UserContainer.module.css";
 import UserCard from "../UserCard/UserCard";
 import Modal from "../Modal/Modal";
-import Loader from "../Loader/Loader";
-import { useGlobalContext } from "@/app/Context/store";
+import { useGlobalContext } from "../../context/store";
 import Heading from "../Heading/Heading";
 
 type serachProps = {
@@ -25,7 +24,7 @@ const UserContainer = ({ userData, page }: serachProps) => {
   } = useGlobalContext();
 
   useEffect(() => {
-    if (page === "topUser") {
+    if (page === "topUser" && window !== undefined) {
       let data = JSON.parse(window.localStorage.getItem("topUsers") || "[]");
       setUserDataOnInitialization(data);
     } else if (page === "user") {

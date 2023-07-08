@@ -7,10 +7,10 @@ const TopUsers = () => {
   const [usersData, setUsersData] = useState([]);
 
   useEffect(() => {
-    const userData = JSON.parse(
-      window.localStorage.getItem("topUsers") || "[]"
-    );
-    setUsersData(userData);
+    if (window !== undefined) {
+      const userData = JSON.parse(localStorage.getItem("topUsers") || "[]");
+      setUsersData(userData);
+    }
   }, []);
   return (
     <>

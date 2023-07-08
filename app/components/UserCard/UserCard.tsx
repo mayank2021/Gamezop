@@ -1,6 +1,6 @@
 "use client";
 import styles from "./UserCard.module.css";
-import { useGlobalContext } from "@/app/Context/store";
+import { useGlobalContext } from "../../context/store";
 
 type userProps = {
   name: string;
@@ -94,7 +94,7 @@ const UserCard = ({ name, page, email, userId }: userProps) => {
 
       {blockedUsers?.some((user: userType) => user?.id === userId) && (
         <div className={styles.timer}>
-          <p>Unblock after 5 mins</p>
+          <p>Unblock after 10 seconds</p>
         </div>
       )}
 

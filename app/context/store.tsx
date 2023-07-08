@@ -39,12 +39,9 @@ type providerProps = {
 export const GlobalContextProvider = ({ children }: providerProps) => {
   const [showMobileNav, setShowMobileNav] = useState<boolean>(false);
   const [storangeChange, setStorageChange] = useState<boolean>(false);
-  let blockedUsersData = JSON.parse(
-    localStorage?.getItem("blockedUsers") || "[]"
-  );
 
-  const [blockedUsers, setblockedUsers] = useState(blockedUsersData);
-  const [topUsers, setTopUsers] = useState<any>([]);
+  const [blockedUsers, setblockedUsers] = useState<any[]>([]);
+  const [topUsers, setTopUsers] = useState<any[]>([]);
 
   useEffect(() => {
     setblockedUsers(JSON.parse(localStorage?.getItem("blockedUsers") || "[]"));
@@ -102,7 +99,7 @@ export const GlobalContextProvider = ({ children }: providerProps) => {
   // ADD OR REMOVE AS A TOP USER
   const handleTopUser = (id: number) => {
     let user = usersData.find((user: any) => user.id === id);
-    let topUsers = JSON.parse(localStorage.getItem("topUsers") || "[]");
+    // let topUsers = JSON.parse(localStorage.getItem("topUsers") || "[]");
     let unique =
       topUsers.length && topUsers.some((user: any) => user.id === id);
 

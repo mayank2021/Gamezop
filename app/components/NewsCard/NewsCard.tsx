@@ -1,7 +1,5 @@
 "use client";
-import { useState } from "react";
 import styles from "./NewsCard.module.css";
-import Modal from "../Modal/Modal";
 
 type data = {
   tit: string;

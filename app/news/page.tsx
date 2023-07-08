@@ -4,7 +4,7 @@ import Heading from "../components/Heading/Heading";
 import styles from "./page.module.css";
 import Modal from "../components/Modal/Modal";
 import Loader from "../components/Loader/Loader";
-import { useGlobalContext } from "../Context/store";
+import { useGlobalContext } from "../context/store";
 
 const News = () => {
   const { news, showModal, setShowModal, activeUser, setActiveUser } =
