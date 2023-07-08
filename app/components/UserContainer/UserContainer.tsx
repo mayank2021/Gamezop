@@ -5,6 +5,7 @@ import UserCard from "../UserCard/UserCard";
 import Modal from "../Modal/Modal";
 import Loader from "../Loader/Loader";
 import { useGlobalContext } from "@/app/Context/store";
+import Heading from "../Heading/Heading";
 
 type serachProps = {
   userData?: any;
@@ -32,8 +33,6 @@ const UserContainer = ({ userData, page }: serachProps) => {
     }
   }, [page, storangeChange]);
 
-  if (usersData?.length === 0) return <Loader />;
-
   return (
     <>
       {showModal && (
@@ -52,10 +51,13 @@ const UserContainer = ({ userData, page }: serachProps) => {
         />
       </div>
       <div className={styles.wrapper}>
+        {!usersData.length && <Heading heading="Empty :)" />}
+
         {usersData?.map((user: any) => (
           <UserCard
             key={user.id}
             userId={user.id}
+            page={page}
             name={user.username}
             email={user.email}
           />

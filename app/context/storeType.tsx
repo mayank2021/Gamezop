@@ -6,6 +6,8 @@ export type userType = {
 };
 
 export interface ContextProps {
+  topUsers: any[];
+  blockedUsers: any[];
   // ------------------------------NEWS PAGE START--------------------------
   news: any[];
   setNews: React.Dispatch<React.SetStateAction<any[]>>;

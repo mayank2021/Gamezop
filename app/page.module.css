@@ -1,0 +1,13 @@
+.welcome{
+    text-align: center;
+    font-size: 4rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;    
+    color: #3D51B3;
+}
+
+@media (max-width:600px) {
+    .welcome{
+        font-size: 2rem;
+    }
+}

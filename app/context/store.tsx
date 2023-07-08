@@ -4,6 +4,8 @@ import { createContext, useContext, useEffect, useState } from "react";
 import { ActiveUserType, userType, ContextProps } from "./storeType";
 
 const GlobalContext = createContext<ContextProps>({
+  topUsers: [],
+  blockedUsers: [],
   // ------------------------------NEWS PAGE START--------------------------
   news: [],
   setNews: (): any[] => [],
@@ -36,6 +38,20 @@ type providerProps = {
 
 export const GlobalContextProvider = ({ children }: providerProps) => {
   const [showMobileNav, setShowMobileNav] = useState<boolean>(false);
+  const [storangeChange, setStorageChange] = useState<boolean>(false);
+  const [handleLoop, setHandleLoop] = useState(true);
+  let blockedUsersData = JSON.parse(
+    localStorage.getItem("blockedUsers") || "[]"
+  );
+
+  const [blockedUsers, setblockedUsers] = useState(blockedUsersData);
+  const [topUsers, setTopUsers] = useState<any>([]);
+
+  useEffect(() => {
+    setblockedUsers(JSON.parse(localStorage.getItem("blockedUsers") || "[]"));
+    setTopUsers(JSON.parse(localStorage.getItem("topUsers") || "[]"));
+  }, [storangeChange]);
+
   //------------------------------------NEWS PAGE START------------------------------
   const [news, setNews] = useState<any>([]);
   const [showModal, setShowModal] = useState<boolean>(false);
@@ -61,7 +77,6 @@ export const GlobalContextProvider = ({ children }: providerProps) => {
   const [usersData, setUsersData] = useState<any[]>([]);
   const [query, setQuery] = useState<string>("");
   const [userDetails, setUserDetails] = useState({});
-  const [storangeChange, setStorageChange] = useState<boolean>(false);
 
   // HANDLE THE QUERY IN SEARCH BOX
   const handleSearch = (que: string, userData: any) => {
@@ -124,6 +139,41 @@ export const GlobalContextProvider = ({ children }: providerProps) => {
     setUsersData(userData);
   };
 
+  // UNBLOCKED, BLOCKED USER AFTER X(5) MINS
+
+  const isExpire = (arr: any, ele: any, ind: number) => {
+    let neArr1 = [...arr];
+    setTimeout(() => {
+      let arr = neArr1.slice(ind + 1);
+      localStorage.setItem("blockedUsers", JSON.stringify(arr));
+    }, ele?.expiryTime - Date.now());
+    setStorageChange(!storangeChange);
+  };
+
+  const checkExpiry = (blckedUser: any) => {
+    setHandleLoop(false);
+    for (let i = 0; i < blckedUser.length; i++) {
+      isExpire(blckedUser, blckedUser[i], i);
+    }
+  };
+
+  const handleUnblockAfterXmin = () => {
+    let sorted = blockedUsers?.sort((p1: any, p2: any) =>
+      p1?.expiryTime > p2?.expiryTime
+        ? 1
+        : p1?.expiryTime < p2?.expiryTime
+        ? -1
+        : 0
+    );
+    checkExpiry(sorted);
+  };
+
+  useEffect(() => {
+    if (blockedUsers.length !== 0) {
+      handleUnblockAfterXmin();
+    }
+  }, [blockedUsers]);
+
   // ------------------------------USER PAGE END--------------------------
 
   return (
@@ -150,6 +200,8 @@ export const GlobalContextProvider = ({ children }: providerProps) => {
         setUserDataOnInitialization,
         showMobileNav,
         setShowMobileNav,
+        topUsers,
+        blockedUsers,
       }}
     >
       {children}

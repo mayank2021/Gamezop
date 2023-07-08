@@ -1,12 +1,11 @@
 "use client";
-import { useState, useEffect } from "react";
 import styles from "./UserCard.module.css";
-import Timer from "../Timer/Timer";
 import { useGlobalContext } from "@/app/Context/store";
 
 type userProps = {
   name: string;
   email: string;
+  page: string;
   userId: number;
 };
 
@@ -15,41 +14,15 @@ type userType = {
   expiryTime: number;
 };
 
-const UserCard = ({ name, email, userId }: userProps) => {
+const UserCard = ({ name, page, email, userId }: userProps) => {
   const {
     query,
     showUserDetails,
     handleTopUser,
-    storangeChange,
+    topUsers,
+    blockedUsers,
     handleUserControl,
   } = useGlobalContext();
-
-  let blockedUsersData = JSON.parse(
-    localStorage.getItem("blockedUsers") || "[]"
-  );
-
-  const [blockedUsers, setblockedUsers] = useState(blockedUsersData);
-  const [topUsers, setTopUsers] = useState<any>([]);
-
-  useEffect(() => {
-    setblockedUsers(JSON.parse(localStorage.getItem("blockedUsers") || "[]"));
-    setTopUsers(JSON.parse(localStorage.getItem("topUsers") || "[]"));
-  }, [storangeChange]);
-
-  // let timerId = useRef(0);
-  // useEffect(() => {
-  //   if (blockedUsersData.length) {
-  //     // timerId.current = window.setInterval(() => {
-  //       let time = Date.now();
-  //       let arr = blockedUsersData.filter(
-  //         (user: userType) => time >= user.expiryTime
-  //       );
-  //       localStorage.setItem("blockedUsers", JSON.stringify(arr));
-  //     // });
-  //   }
-
-  //   return () => clearInterval(timerId.current);
-  // }, [storangeChange]);
 
   return (
     <div className={styles.userCard}>
@@ -81,7 +54,7 @@ const UserCard = ({ name, email, userId }: userProps) => {
           strokeWidth={1.5}
           stroke="currentColor"
           className={`${styles.topUser} ${
-            topUsers.some((user: any) => user.id === userId) &&
+            topUsers?.some((user: any) => user?.id === userId) &&
             styles.topUserTrue
           }`}
           onClick={() => handleTopUser(userId)}
@@ -94,34 +67,34 @@ const UserCard = ({ name, email, userId }: userProps) => {
         </svg>
         <p>Top User</p>
       </div>
-      <div className={styles.isBlockedContainer}>
-        <label className={styles.switch}>
-          <input
-            type="checkbox"
-            onChange={() => handleUserControl(userId)}
-            // checked={blockedUsers.includes(userId) ? true : false}
-          />
-          <span className={`${styles.slider} ${styles.round}`}></span>
-        </label>
-        <p
-          className={`${
-            blockedUsers.some((user: any) => user.id === userId)
-              ? styles.blocked
-              : styles.unBlocked
-          }`}
-        >
-          {blockedUsers.some((user: any) => user.id === userId)
-            ? "Blocked"
-            : "unblocked"}
-        </p>
-      </div>
+      {page !== "topUser" && (
+        <div className={styles.isBlockedContainer}>
+          <label className={styles.switch}>
+            <input type="checkbox" onChange={() => handleUserControl(userId)} />
+            <span
+              className={`${styles.slider} ${styles.round}  ${
+                blockedUsers?.some((user: any) => user?.id === userId) &&
+                styles.sliderActive
+              }`}
+            ></span>
+          </label>
+          <p
+            className={`${
+              blockedUsers?.some((user: any) => user?.id === userId)
+                ? styles.blocked
+                : styles.unBlocked
+            }`}
+          >
+            {blockedUsers?.some((user: any) => user?.id === userId)
+              ? "Blocked"
+              : "unblocked"}
+          </p>
+        </div>
+      )}
 
-      {blockedUsers.some((user: userType) => user.id === userId) && (
+      {blockedUsers?.some((user: userType) => user?.id === userId) && (
         <div className={styles.timer}>
-          <p>Unblocking after:</p>
-          <span>
-            <Timer seconds={10} />
-          </span>
+          <p>Unblock after 5 mins</p>
         </div>
       )}
 

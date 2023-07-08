@@ -50,7 +50,7 @@ const Drawer = ({ showDrawer, setShowDrawer }: DrawerProps) => {
               />
             </svg>
 
-            <a href="#">home</a>
+            <a href="/">home</a>
           </li>
           <li className={styles.navItem}>
             <svg
@@ -68,7 +68,7 @@ const Drawer = ({ showDrawer, setShowDrawer }: DrawerProps) => {
               />
             </svg>
 
-            <a href="#">News</a>
+            <a href="/news">News</a>
           </li>
           <li className={styles.navItem}>
             <svg

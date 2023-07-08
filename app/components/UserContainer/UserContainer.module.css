@@ -7,7 +7,7 @@
 
 .searchBar{
     width: 98%;
-    border: 2px solid #454545;
+    border: 2px solid #3D51B3;
     border-radius: 4px;
     height: 2rem;
     padding: 10px;
@@ -18,7 +18,7 @@
 
 .searchBar:focus{
     outline: none;
-    border: 2px solid #2196F3;
+    border: 2px solid #54B435;
 }
 
 @media (max-width:900px) {

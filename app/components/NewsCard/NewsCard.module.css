@@ -6,7 +6,7 @@
     color: #454545;
     margin: 15px 10px;
     height: 8rem;
-    border-bottom: 4px solid greenyellow;
+    border-bottom: 4px solid #3D51B3;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
@@ -23,6 +23,6 @@ margin: 0;
     border: none;
     background-color: transparent;
     font-weight: 600;
-    color: #068FFF;
+    color: #3D51B3;
     cursor: pointer;
 }
