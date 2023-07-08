@@ -1,0 +1,170 @@
+.userCard{
+    width: 14rem;
+    border-radius: 6px;
+    padding: 1rem 0;
+    position: relative;
+    margin: 40px 30px;
+    border-bottom: 4px solid red;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.userCard img{
+    position: absolute;
+    left: 50%;
+    top:-30%;
+    transform: translateX(-50%);
+}
+
+.icon{
+    width: 15px;
+    height: 15px;
+    margin-right: 3px;
+}
+
+.userCardText{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #454545;
+}
+
+.userCardText h2{
+    margin: 0;
+}
+
+.userCardTextEmail{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.userCardTextEmail p {
+font-size: 0.7rem;
+}
+
+.isBlockedContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.isBlockedContainer p{
+    text-transform: capitalize;
+    font-weight: 500;
+    margin-left: 5px;
+}
+
+/* checkbox  */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 40px;
+    height: 20px;
+  }
+  
+.switch input { 
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+  
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 22px;
+    width: 22px;
+    left: -2px;
+    bottom: -2px;
+    border: 0.5px solid #454545;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+  
+input:checked + .slider {
+    background-color: #2196F3;
+  }
+  
+  input:focus + .slider {
+    box-shadow: 0 0 1px #2196F3;
+  }
+  
+  input:checked + .slider:before {
+    -webkit-transform: translateX(20px);
+    -ms-transform: translateX(20px);
+    transform: translateX(20px);
+  }
+
+  .slider.round {
+    border-radius: 34px;
+  }
+  
+  .slider.round:before {
+    border-radius: 50%;
+  }
+
+  .timer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .timer p{
+    margin: 10px 5px;
+    font-weight: 500;
+    color: #545454;
+  }
+
+  .timer span{
+    color: #068FFF;
+    font-weight: 600;
+  }
+
+  .blocked{
+  color: #F45050;
+  }
+
+  .unBlocked{
+    color:#54B435
+  }
+
+.userKnowMoreBtn{
+background-color: #068FFF;
+color: #fff;
+border: none;
+width: 80%;
+border-radius: 5px;
+cursor: pointer;
+font-size: 1rem;
+padding: 8px;
+  }
+
+.userKnowMoreBtn:hover{
+  background-color: #54B435;
+}
+
+.topUser{
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+}
+
+.topUserTrue{
+  fill: #F45050;
+  color: #F45050;
+}
